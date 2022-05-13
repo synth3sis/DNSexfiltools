@@ -2,10 +2,10 @@
 
 Simple penetration testing tools to execute exfiltration through DNS and elude common detection methods.
 
-Modules caption:
-:heavy_check_mark: Available
-:large_blue_circle: Under development
-:white_circle: To be developed
+Modules caption: \
+:heavy_check_mark: Available \
+:large_blue_circle: Under development \
+:white_circle: To be developed \
 
 
 ## Client Exfiltration
