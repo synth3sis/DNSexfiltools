@@ -8,10 +8,10 @@ I'm still developing the client side for more than one programming language, to 
 
 | Language | Available | Encryption |
 | ------ | ------ | ------|
-| python3 | :heavy_check_mark: | @todo |
-| python2 | @todo | @todo |
-| powershell | @todo | @todo |
-| Compiled C++ | @todo | @todo |
+| python3 | :heavy_check_mark: | :soon: |
+| python2 | :soon: | :soon: |
+| powershell | :soon: | :soon: |
+| Compiled C++ | :soon: | :soon: |
 
 ### Features
 | | |
