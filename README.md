@@ -21,7 +21,7 @@ I'm still developing the client side for more than one programming language, to 
 | :heavy_check_mark: | Set fake domain or legit domain for DNS queries, your machine will respond to both |
 | :heavy_check_mark: | Set exfiltration chunks length as third level domains
 | :heavy_check_mark: | Optional: print server's response to verify queries |
-| :heavy_multiplication_x: | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
+| :x: | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
 
 ## Fake DNS Server
 The server module will provide a simple fake DNS server to get client's queries
