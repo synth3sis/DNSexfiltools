@@ -5,8 +5,9 @@ Simple penetration testing tools to execute exfiltration through DNS and elude c
 Modules caption: \
 :heavy_check_mark: Available \
 :large_blue_circle: Under development \
-:white_circle: To be developed \
+:white_circle: To be developed
 
+<br>
 
 ## Client Exfiltration
 Deploy these tools on the target machine to exfiltrate files through DNS requests.
@@ -31,7 +32,11 @@ I'm still developing the client side for more than one programming language, to 
 | :heavy_check_mark: | Optional: print server's response to verify queries |
 | :large_blue_circle: | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
 
+<br>
+
 ---
+
+<br>
 
 ## Fake DNS Server
 Developed with Python3, the server module will provide a simple fake DNS server to get client's queries from your attacking machine, and responde with a spoofed IP of your choice (default is google.com's).
