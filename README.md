@@ -40,9 +40,6 @@ I'm still developing the client side for more than one programming language, to 
 | :white_circle:      | Send entire directory as compressed file |
 
 <br>
-
----
-
 <br>
 
 ## Fake DNS Server
@@ -64,9 +61,6 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 | :white_circle: | Optional: file decryption and save |
 
 <br>
-
----
-
 <br>
 
 ## Use case
