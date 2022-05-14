@@ -61,8 +61,8 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 | :large_blue_circle: | Compression receiving capabilities |
 | :white_circle: | Optional: file decryption and save |
 
-## Use Case
-### Victim side
+## Use case
+### Attacker side (fake DNS server)
 ![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/fakeDNS-server3.gif)
-### Attacker side
+### Victim side (exfiltration tool)
 ![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/dnsexfil3.gif)
