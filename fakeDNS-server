@@ -54,9 +54,10 @@ else:
 	dns_port = args.port
 
 print("----------------------------------------------")
-print("+ Starting FakeDNS-server3 on interface " + interface)
-print("+ Domain:     " + domain)
-print("+ Spoofed IP: " + resolve)
+print("+ Starting FakeDNS-server3 on port " + str(dns_port))
+print("+ Interface:    " + interface)
+print("+ Fake Domain:  " + domain)
+print("+ Spoofed IP:   " + resolve)
 print("----------------------------------------------")
 
 # New UDP socket (If you already have a DNS server, stop it or the bind will fail)
@@ -70,12 +71,13 @@ try:
 	while True:
 		# RECEIVE UDP packets
 		data, client_addr = udp_socket.recvfrom(1024)
+		rhost = client_addr[0]
 		#print("data: " + data.hex())
-		#print("Address: " + client_addr[0])
+		#print("Address: " + rhost)
 
 		# DECODE incoming DNS queries
 		domain_exfil = decode_dns_query(data)
-		print("<== " + domain_exfil, end="")
+		print("[" + rhost + "]" + " ==> " + domain_exfil, end="")
 
 		# ENCODE & SEND fake DNS response
 		encode_dns_response()

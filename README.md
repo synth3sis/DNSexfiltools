@@ -1,6 +1,6 @@
 # DNS Exfil Tools
 
-Simple penetration testing tools to execute exfiltration through DNS and avoid common detection methods.
+Simple penetration testing tools to execute file exfiltration through DNS and avoid common detection methods.
 
 > Modules caption: \
 :heavy_check_mark: Available \

