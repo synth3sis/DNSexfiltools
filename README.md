@@ -24,17 +24,23 @@ I'm still developing the client side for more than one programming language, to 
 ### Features
 | | |
 | ------ | ------ | 
-| :heavy_check_mark: | Set timeout between DNS requests to slow down exfiltration and prevent detection |
-| :heavy_check_mark: | Set random timeout between requests to prevent periodically checks detection |
-| :heavy_check_mark: | Set fake domain or legit domain for DNS queries, your machine will respond to both |
-| :heavy_check_mark: | Set exfiltration chunks length as third level domains
-| :heavy_check_mark: | Optional: print server's response to verify queries |
-| :large_blue_circle: | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
+| :heavy_check_mark:  | Set timeout between DNS requests to slow down exfiltration and prevent detection |
+| :heavy_check_mark:  | Set random timeout between requests to prevent periodically checks detection |
+| :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, your machine will respond to both |
+| :heavy_check_mark:  | Set exfiltration chunks length as third level domains
+| :heavy_check_mark:  | Optional: print server's response to verify queries |
+
+### @todo
+|  |  |
+| ------ | ------ |
+| :large_blue_circle: | Send filename as first action |
+| :large_blue_circle: | Compress exfiltrating files to make the transfer faster |
+| :white_circle:      | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
+| :white_circle:      | Send multiple files at once |
+| :white_circle:      | Send entire directory as compressed file |
 
 <br>
-
 ---
-
 <br>
 
 ## Fake DNS Server
@@ -43,8 +49,20 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 ### Features
 | | |
 | ------ | ------ | 
-| :heavy_check_mark: | Set custom IP to spoof as record A response |
-| :heavy_check_mark: | Set custom domain for further automated file decode |
-| :heavy_check_mark: | Set custom UDP port for DNS service (default is 53) |
+| :heavy_check_mark:  | Set custom IP to spoof as record A response |
+| :heavy_check_mark:  | Set custom domain for further automated file decode |
+| :heavy_check_mark:  | Set custom UDP port for DNS service (default is 53) |
+
+### @todo
+| | |
+| ------ | ------ | 
+| :large_blue_circle: | Get filename from exfiltration first chunk |
 | :large_blue_circle: | Optional: automated file decode/save |
-| :large_blue_circle: | Optional: file decryption and save |
+| :large_blue_circle: | Compression receiving capabilities |
+| :white_circle: | Optional: file decryption and save |
+
+## Use Case
+### Victim side
+![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/fakeDNS-server3.gif)
+### Attacker side
+![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/dnsexfil3.gif)
