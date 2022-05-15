@@ -29,11 +29,11 @@ I'm still developing the client side for more than one programming language, to 
 | :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, your machine will respond to both |
 | :heavy_check_mark:  | Set exfiltration chunks length as third level domains
 | :heavy_check_mark:  | Optional: print server's response to verify queries |
+| :heavy_check_mark:  | Send filename as first action |
 
 ### @todo
 |  |  |
 | ------ | ------ |
-| :large_blue_circle: | Send filename as first action |
 | :large_blue_circle: | Compress exfiltrating files to make the transfer faster |
 | :white_circle:      | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
 | :white_circle:      | Send multiple files at once |
