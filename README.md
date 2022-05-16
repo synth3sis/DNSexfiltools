@@ -16,8 +16,8 @@ I'm still developing the client side for more than one programming language, to 
 | Language | Available | Encryption |
 | ------ | ------ | ------|
 | python3      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark:  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
-| python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
-| powershell   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
+| powershell   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
+| python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | Compiled C++ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 
 
@@ -26,18 +26,19 @@ I'm still developing the client side for more than one programming language, to 
 | ------ | ------ | 
 | :heavy_check_mark:  | Set timeout between DNS requests to slow down exfiltration and prevent detection |
 | :heavy_check_mark:  | Set random timeout between requests to prevent periodically checks detection |
-| :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, your machine will respond to both |
-| :heavy_check_mark:  | Set exfiltration chunks length as third level domains
-| :heavy_check_mark:  | Optional: print server's response to verify queries |
-| :heavy_check_mark:  | Send filename as first action |
+| :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, the DNS server listening on your machine will respond to both |
+| :heavy_check_mark:  | Set custom exfiltration third level domain chunks length |
+| :heavy_check_mark:  | Optional: print server's response as record A resolution to verify queries |
 
 ### @todo
-|  |  |
+| | |
 | ------ | ------ |
+| :large_blue_circle: | Send filename as first action |
 | :large_blue_circle: | Compress exfiltrating files to make the transfer faster |
+| :large_blue_circle: | Optional: md5 file hash trasmission before file content for integrity checks|
 | :white_circle:      | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
-| :white_circle:      | Send multiple files at once |
-| :white_circle:      | Send entire directory as compressed file |
+| :white_circle:      | Optional: Send multiple files at once |
+| :white_circle:      | Optional: Send entire directory as compressed file |
 
 <br>
 <br>
