@@ -80,7 +80,9 @@ PARAMETERS
 
     DNS queries will be like [32-long-chunk].fakedomain.com and will be going out every 10 seconds
 ```
+
 <br>
+
 ---
 
 ### Features and @TODOs
@@ -91,7 +93,7 @@ PARAMETERS
 | :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, the DNS server listening on your machine will respond to both |
 | :heavy_check_mark:  | Set custom exfiltration third level domain chunks length |
 | :heavy_check_mark:  | Send filename as first action |
-| :hevay_check_mark:  | Optional: md5 file hash trasmission before file content for integrity checks|
+| :heavy_check_mark:  | Optional: md5 file hash trasmission before file content for integrity checks|
 | :large_blue_circle: | Optional: print server's response as record A resolution to verify queries |
 | :large_blue_circle: | Optional: Compress files to exfiltrate to speed up the process |
 | :white_circle:      | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
