@@ -16,7 +16,7 @@ I'm still developing the client side for more than one programming language, to 
 | Language | Available | Encryption |
 | ------ | ------ | ------|
 | python3      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark:  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
-| powershell   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_check_mark:  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
+| powershell   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark:  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
 | python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | Compiled C++ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 
