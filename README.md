@@ -23,7 +23,7 @@ I'm still developing the client side for more than one programming language, to 
 
 <br>
 
-### Powershell module
+### Powershell Module
 Use the cmdlet `Get-Help` to get execution informations. You can use `Get-Help -detailed` to print a decent overview. \
 Here is an instance:
 ```
@@ -84,7 +84,7 @@ PARAMETERS
 
 <br>
 
-### Windows binaries
+### Windows Binaries
 Windows binaries are the PE version of the powershell script above. I used the awesome 
 interference-security's [PS2EXE](https://github.com/interference-security/PS2EXE) utility to quickly get the 32 and 64 bit versions.
 
@@ -132,7 +132,7 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 <br>
 <br>
 
-## Use case
+## How it Works
 ### Attacker side (fake DNS server)
 ![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/fakeDNS-server3.gif)
 ### Victim side (exfiltration tool)
