@@ -114,7 +114,7 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 | :heavy_check_mark:  | Set custom UDP port for DNS service (default is 53) |
 | :large_blue_circle: | Get filename from exfiltration first chunk |
 | :large_blue_circle: | Optional: automated file decode/save |
-| :large_blue_circle: | Compression receiving capabilities |
+| :large_blue_circle: | Optional: compressed files receiving capabilities |
 | :white_circle:      | Optional: file decryption and save |
 
 <br>
