@@ -23,7 +23,7 @@ I'm still developing the client side for more than one programming language, to 
 <br>
 
 ### Powershell module
-Use the cmdlet `Get-Help` to get execution informations. You can use `Get-Help -detailed` to print a decent overview. \\
+Use the cmdlet `Get-Help` to get execution informations. You can use `Get-Help -detailed` to print a decent overview. \
 Here is an instance:
 ```
 NAME
