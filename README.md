@@ -133,7 +133,7 @@ Developed with Python3, the server module will provide a simple fake DNS server 
 <br>
 
 ## How it Works
-### Attacker side (fake DNS server)
+### Attacker Side (fake DNS server)
 ![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/fakeDNS-server3.gif)
-### Victim side (exfiltration tool)
+### Victim Side (exfiltration tool)
 ![](https://raw.githubusercontent.com/synth3sis/DNSexfiltools/main/media/dnsexfil3.gif)
