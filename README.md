@@ -17,7 +17,7 @@ I'm still developing the client side for more than one programming language, to 
 | ------ | ------ | ------ | ------ |
 | python3      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark:     | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
 | powershell   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark:     | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle: |
-| python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
+| python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:large_blue_circle:    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | x86 Win binaries | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | x64 Win binaries | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:heavy_check_mark: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 
