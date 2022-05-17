@@ -20,7 +20,9 @@ I'm still developing the client side for more than one programming language, to 
 | python2      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 | Compiled C++ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle:      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:white_circle: |
 
-### Powershell
+<br>
+
+### Powershell module
 Use the cmdlet `Get-Help` to get execution informations. You can use `Get-Help -detailed` to print a decent overview.
 Here is an instance:
 ```
